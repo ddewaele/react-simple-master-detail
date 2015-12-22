@@ -2,6 +2,16 @@
 
 Simple ReactJS SPA Master-Detail application
 
+## JSFiddle
+
+[JSFiddle](https://jsfiddle.net/ddewaele/fsqaapgm/)
+
+
+## Screenshot
+
+![Screenshot](./docs/screenshot.png)
+
+
 # Project setup
 
 This project contains 
