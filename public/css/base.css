@@ -66,3 +66,6 @@ li {
    cursor: hand;
 }
 
+.itemSelected {
+  font-weight: bold;
+}

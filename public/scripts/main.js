@@ -1,5 +1,12 @@
  const MASTERLISTITEM_SELECTION = "masterListItemSelection";
 
+/*
+ | top-level component
+ | 
+ | Contain a masterlist component for displaying the listItems.
+ | Contains the detailPane on the same level (no parent-child relationship)
+ | 
+ */
  var MasterPane = React.createClass({
 
  	render: function() {
@@ -13,7 +20,13 @@
  	}
  });
 
-
+/*
+ | The master list component renders the different MasterListItem components 
+ | 
+ | It fetches these from the javascript array that is passed on via properties.
+ | Each MasterListItem renders an individual LI element.
+ | 
+ */
  var MasterList = React.createClass({
 
  	getInitialState: function() {
@@ -32,7 +45,9 @@
 
  		var masterListItems = this.props.masterListArray.map(function(item) {
  			return (
- 				<MasterListItem key={item.id} id={item.id} onClick={that.selectItem} selected={that.state.selectedId===item.id}>{item.name}</MasterListItem>
+ 				<MasterListItem key={item.id} id={item.id} selectItem={that.selectItem} selected={that.state.selectedId===item.id}>
+          {item.name}
+        </MasterListItem>
  			);
  		});
 
@@ -48,13 +63,24 @@
  
  });
 
-
+/*
+ | The master list item component renders a single list item.
+ | 
+ | It has some logic to render itself differently in case it is selected.
+ | 
+ */
 var MasterListItem = React.createClass({
+
+
+  localHandleClick: function() {
+    this.props.selectItem(this.props.id)
+  },
 
  	render: function() {
 
  		return (
- 			<li onClick={this.props.onClick.bind(null,this.props.id)} style={{fontWeight: this.props.selected ? "bold" : "normal"}}>
+      
+ 			<li onClick={this.localHandleClick} className={classNames({itemSelected: this.props.selected})}>
  				{this.props.children} 
  			</li>
  		);
@@ -85,9 +111,6 @@ var MasterListItem = React.createClass({
  		return (
  			<div className="detailPane">
  				<p>This is the details pane.</p>
-
- 				<div id="detailText"/>
-
  				<p>Selected item = {this.state.selectedId && this.state.selectedId} </p>
  			</div>
  		);
@@ -97,9 +120,9 @@ var MasterListItem = React.createClass({
 
 var masterListArray = [
 
-	{"id":1, "name":"test 1"},
-	{"id":2, "name":"test 2"},
-	{"id":3, "name":"test 3"}
+	{"id":1, "name":"test 1", "detail":"this is the detail for test 1"},
+	{"id":2, "name":"test 2", "detail":"this is the detail for test 2"},
+	{"id":3, "name":"test 3", "detail":"this is the detail for test 3"}
 ];
 
 
