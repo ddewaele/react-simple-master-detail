@@ -4,8 +4,8 @@ Simple ReactJS SPA Master-Detail application
 
 ## JSFiddle
 
-[JSFiddle](https://jsfiddle.net/ddewaele/fsqaapgm/)
-
+[JSFiddle - Demo1](https://jsfiddle.net/ddewaele/fsqaapgm/)
+[JSFiddle - Demo2](https://jsfiddle.net/ddewaele/1nzqdw92/)
 
 ## Screenshot
 
